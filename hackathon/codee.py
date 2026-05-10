@@ -238,8 +238,10 @@ while start != "yes" and start != "no":
                             sleep_time += event.unicode
                     
                     elif status == "game4":
-                        if event.key == pygame.K_RETURN:
+                        if event.key == pygame.K_RETURN and (1 <= int(stress) <= 10):
                             status = "game5"
+                        elif event.key == pygame.K_RETURN and not (1 <= int(stress) <= 10):
+                            stress = ""
                         elif event.key == pygame.K_BACKSPACE:
                             stress = stress[:-1]
                         else: 
@@ -264,12 +266,12 @@ while start != "yes" and start != "no":
                             symptom_type += event.unicode
                             
                     elif status == "game7":
-                        if event.key == pygame.K_RETURN:
+                        if event.key == pygame.K_RETURN and (1 <= int(mental) <= 10):
                             status = "game8"
-                        elif event.key == pygame.K_BACKSPACE and ((31 <= ord(mental) <= 39) or mental == "10"):
-                            mental = mental[:-1]
-                        elif event.key == pygame.K_RETURN and not ((31 <= ord(mental) <= 39) or mental == "10"):
+                        elif event.key == pygame.K_RETURN and not (1 <= int(mental) <= 10):
                             mental = ""
+                        elif event.key == pygame.K_BACKSPACE:
+                            mental = mental[:-1]
                         else: 
                             mental += event.unicode
                     
