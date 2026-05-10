@@ -266,8 +266,10 @@ while start != "yes" and start != "no":
                     elif status == "game7":
                         if event.key == pygame.K_RETURN:
                             status = "game8"
-                        elif event.key == pygame.K_BACKSPACE:
+                        elif event.key == pygame.K_BACKSPACE and ((31 <= ord(mental) <= 39) or mental == "10"):
                             mental = mental[:-1]
+                        elif event.key == pygame.K_RETURN and not ((31 <= ord(mental) <= 39) or mental == "10"):
+                            mental = ""
                         else: 
                             mental += event.unicode
                     
